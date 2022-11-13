@@ -1,0 +1,22 @@
+:root {
+  --button-bg: #c6c9cd;
+  --border-full: #f6f6f6;
+  --available-rooms: #bfdeff;
+  --reserved-rooms: #fedbe4;
+  --no-available: #ececec;
+  --selected-room: #daf0e3;
+  --selected-border: #0b9e43;
+  --secondary-color: #aaabb0;
+  --mobile-bg: #f2f5fa;
+  --dark-blue: #007cff;
+}
+
+*, body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button{
+  cursor: pointer;
+}
