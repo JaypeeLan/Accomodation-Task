@@ -14,10 +14,14 @@ const useFetch = (url) => {
         setData(res.data);
         setIsLoading(false);
       })
-      .catch((err, res) => {
-        setError(err.message);
-        console.log(res.status);
-        setIsLoading(false);
+      .catch((err) => {
+        if (err.response.status === 500) {
+          setError("Server error. Please try again.");
+        }else if (err.response.status === 400){
+          setError("Bad request. Please check the link and try again.");
+        }else if (err.response.status === 404){
+          setError("Ooops! This page could not be found.");
+        } setIsLoading(false);
       });
   }, [url]);
 

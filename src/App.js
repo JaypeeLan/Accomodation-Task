@@ -1,10 +1,12 @@
 import "./App.css";
-import DisplayRooms from "./pages/DisplayRooms";
+import Home from "./pages/Home";
+import SuccessModal from "./pages/SuccessModal";
 
 function App() {
   return (
     <div className="App">
-      <DisplayRooms />
+      <Home/> 
+      {/* <SuccessModal /> */}
     </div>
   );
 }

@@ -1,17 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap");
 
-body{
-  font-family: 'Poppins', sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
 }
 
+/* =============================== */
+#home .proceedBtn {
+  display: flex;
+  justify-content: center;
+}
 
-section{
+#home .proceedBtn button {
+  padding: 1rem 5rem 1rem 5rem;
+  background-color: var(--button-bg);
+  border: 0;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+/* ----------------------------------- */
+
+#homepage {
+  border: 1px solid var(--border-full);
+  padding: 40px;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+#homepage .halls {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#homepage .halls .floor {
+  margin-top: 3rem;
+}
+
+/* ========================== */
+
+section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
-
-.cards{
+/* -------------------------- */
+.cards {
   position: relative;
   min-height: 100px;
   width: 7.5rem;
@@ -22,15 +57,13 @@ section{
   text-align: center;
 }
 
-
-.card{
+.card {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* --------------------- */
-/* --------------------------- */
+/* =================== modal ================== */
 .pop-up-container {
   position: fixed;
   top: 0;
@@ -46,7 +79,6 @@ section{
 }
 .pop-up-container > div {
   max-width: 90vw;
-  /* min-height: 90%; */
   background-color: rgb(39, 57, 63);
   margin: auto;
   padding: 30px;
@@ -64,7 +96,7 @@ section{
   padding-bottom: 15px;
 }
 
- div.pop-up-container > div > div > button {
+div.pop-up-container > div > div > button {
   padding: 5px 10px;
   background-color: rgb(126, 102, 102);
   border: none;
@@ -72,3 +104,4 @@ section{
   margin: 20px;
   cursor: pointer;
 }
+/* ============================- */
