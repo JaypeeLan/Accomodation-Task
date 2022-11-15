@@ -16,12 +16,13 @@ const useFetch = (url) => {
       })
       .catch((err) => {
         if (err.response.status === 500) {
-          setError("Server error. Please try again.");
-        }else if (err.response.status === 400){
-          setError("Bad request. Please check the link and try again.");
-        }else if (err.response.status === 404){
+          setError("Server error. Please try again  later.");
+        } else if (err.response.status === 400) {
+          setError("Bad request. Please try again or contact Administrator.");
+        } else if (err.response.status === 404) {
           setError("Ooops! This page could not be found.");
-        } setIsLoading(false);
+        }
+        setIsLoading(false);
       });
   }, [url]);
 

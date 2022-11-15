@@ -20,6 +20,6 @@ const Cards = (props) => {
       <span>({props.spacesLeft})</span>
     </div>
   );
-};git commit -m "updated error messages, POST request and home component"
+};
 
 export default Cards;

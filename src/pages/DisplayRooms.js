@@ -33,14 +33,14 @@ const DisplayRooms = () => {
         <p>{error}.</p>
       ) : isLoading ? (
         <div style={{ margin: "0 auto" }}>
-          <ThreeDots />
+          <ThreeDots stroke="#98ff98" />
         </div>
       ) : (
         // ----------------------------//
         <>
           {data && (
             <>
-            {/* To access nested arrays without looping through each one, use flat method */}
+              {/* To access nested arrays without looping through each one, use flat method */}
               {data.flat(1)?.map((rooms) => (
                 <div className="cards" onClick={() => showRoomDetails(rooms)}>
                   <Cards

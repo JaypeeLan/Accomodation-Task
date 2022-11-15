@@ -9,6 +9,7 @@
   --secondary-color: #aaabb0;
   --mobile-bg: #f2f5fa;
   --dark-blue: #007cff;
+  --white: #fff
 }
 
 *, body{
@@ -19,4 +20,8 @@
 
 button{
   cursor: pointer;
+}
+
+span{
+  font-size: clamp(10px, 1vw, 13px);
 }

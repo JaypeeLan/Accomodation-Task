@@ -30,10 +30,10 @@ const DisplayOtherRoom = () => {
   return (
     <section style={stopScroll}>
       {!!error ? (
-        <p>Ooops, {error}.</p>
+        <p>{error}.</p>
       ) : isLoading ? (
         <div style={{ margin: "0 auto" }}>
-          <ThreeDots />
+          <ThreeDots stroke="#98ff98" />
         </div>
       ) : (
         // ----------------------------//
