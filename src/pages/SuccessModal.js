@@ -1,11 +1,15 @@
-import React from "react";
+import {useState} from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 
-const SuccessModal = () => {
+const SuccessModal = ({error, loaded}) => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
 
   const style = {
     position: "absolute",
@@ -19,10 +23,6 @@ const SuccessModal = () => {
     p: 4,
   };
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
 
   return (
     <div>
@@ -34,12 +34,18 @@ const SuccessModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          {!!error ? (
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {" "}
+              {error}{" "}
+            </Typography>
+          ) : !loaded ? (
+            <p>loading...</p>
+          ) : (
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Your Room has been booked successfully.
+            </Typography>
+          )}
         </Box>
       </Modal>
     </div>

@@ -114,7 +114,7 @@ section {
 }
 .pop-up-container > div {
   max-width: 90vw;
-  background-color: rgb(39, 57, 63);
+  background-color: var(--white);
   margin: auto;
   padding: 30px;
 }
@@ -125,6 +125,8 @@ section {
   justify-content: space-around;
   align-items: center;
   padding-top: 30px;
+  padding-bottom: 40px;
+  color: black;
 }
 
 .pop-up-content > div > * {

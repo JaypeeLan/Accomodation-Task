@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "./ConfirmModal";
 import Cards from "../components/Cards";
 import useFetch from "../hooks/useFetch";
 import { ThreeDots } from "react-loading-icons";

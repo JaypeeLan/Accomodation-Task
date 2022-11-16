@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import ConfirmModal from "./ConfirmModal";
 import Cards from "../components/Cards";
 import useFetch from "../hooks/useFetch";
 import { ThreeDots } from "react-loading-icons";
@@ -7,11 +7,11 @@ import { ThreeDots } from "react-loading-icons";
 const DisplayRooms = () => {
   // Used the Api domain name as proxy to bypass the CORS
   const { data, error, isLoading } = useFetch(`/api/rooms?hallId=mariere`); //check line 5 in package.json file
- 
+
   // ----------------------------------------------//
   const [modalToggle, setModalToggle] = useState(false);
   const [modalContent, setModalContent] = useState();
-  
+
   const [stopScroll, setStopScroll] = useState(null);
   // ===============================================//
 
@@ -26,7 +26,7 @@ const DisplayRooms = () => {
       setStopScroll(null);
     }
   };
-// ---------------------------------------------------==
+  // ---------------------------------------------------==
   return (
     <section style={stopScroll}>
       {!!error ? (
@@ -51,8 +51,9 @@ const DisplayRooms = () => {
               ))}
 
               {modalToggle && (
-                <Modal
+                <ConfirmModal
                   room_no={modalContent.roomNo}
+                  hall_id={modalContent.hallId}
                   closeTheModal={showRoomDetails}
                 />
               )}

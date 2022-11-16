@@ -1,7 +1,6 @@
 {
   "name": "task-app",
   "version": "0.1.0",
-   "type": "module",
   "private": true,
   "proxy": "http://mockaccommodation.tranzgate.com.ng",
   "dependencies": {
