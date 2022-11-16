@@ -15,9 +15,9 @@ const Modal = ({ room_no, closeTheModal }) => {
   const [error, setError] = useState("");
   const [loaded, setLoaded] = useState(false);
 
-  const sendPostRequest = async () => {
+  const sendPostRequest = () => {
    closeTheModal()
-    await axios
+     axios
       .post("/api/rooms", payload)
       .then((response) => setData(response.data))
       .catch((error) => setError(error.message))
