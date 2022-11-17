@@ -4,7 +4,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-
 /* ----------------------------------- */
 
 #homepage {
@@ -14,29 +13,32 @@ body {
   margin-bottom: 1rem;
 }
 
-#homepage .halls,  #home .instructions {
+#homepage .halls,
+#home .instructions {
   width: 80%;
   margin: 0 auto;
 }
 
-#homepage .halls .floor,  #home .instructions {
+#homepage .halls .floor,
+#home .instructions {
   margin-top: 3rem;
 }
 
 /* =============================== */
-#home navbar{
+#home nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px 10px 20px;
 }
 
-#home .proceedBtn, .profile {
+#home .proceedBtn,
+.profile {
   display: flex;
   justify-content: center;
 }
 
-#home .proceedBtn{
+#home .proceedBtn {
   margin-top: 5rem;
   padding-bottom: 30px;
 }
@@ -52,24 +54,25 @@ body {
   -o-border-radius: 5px;
 }
 
-#home .instructions{
+#home .instructions {
   display: flex;
   justify-content: normal;
   padding-left: 40px;
 }
 
-#home .color-instructions, #home .detailed_instructions {
+#home .color-instructions,
+#home .detailed_instructions {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 
-#home .color-instructions > *, #home .detailed_instructions > *{
+#home .color-instructions > *,
+#home .detailed_instructions > * {
   padding-bottom: 5px;
 }
 
-#home .detailed_instructions{
+#home .detailed_instructions {
   justify-content: center;
   margin-left: 20px;
 }
@@ -80,16 +83,20 @@ section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
 }
 /* -------------------------- */
 .cards {
   position: relative;
-  min-height: 100px;
-  width: 7.5rem;
+  min-height: 80px;
+  width: 70px;
+  max-width: 80px;
   max-width: 100%;
   margin: 5px;
   margin-right: 1%;
   text-align: center;
+  background-color: red;
+  cursor: pointer;
 }
 
 .card {
@@ -98,79 +105,46 @@ section {
   height: 100%;
 }
 
-/* =================== modal ================== */
-.pop-up-container {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding-top: 10px;
-}
-.pop-up-header {
-  width: 100%;
-  text-align: right;
-}
-.pop-up-container > div {
-  max-width: 90vw;
-  background-color: var(--white);
-  margin: auto;
-  padding: 30px;
+.card > * {
+  margin-top: 1rem;
 }
 
-.pop-up-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 30px;
-  padding-bottom: 40px;
-  color: black;
-}
-
-.pop-up-content > div > * {
-  padding-bottom: 15px;
-}
-
-div.pop-up-container > div > div > button {
-  padding: 5px 10px;
-  background-color: rgb(126, 102, 102);
-  border: none;
-  outline: none;
-  margin: 20px;
-  cursor: pointer;
-}
 /* ============================- */
 
-.goBack, .notifications, #home .instructions{
+.goBack,
+.notifications,
+#home .instructions {
   opacity: 0;
 }
 
-#home footer{
+#home footer {
   display: none;
 }
 
 @media screen and (max-width: 414px) {
-body{
-  background-color: var(--mobile-bg);
-}
+  body {
+    background-color: var(--mobile-bg);
+  }
 
-  .goBack, .notifications, #home .instructions{
-  opacity: 1;
-}
+  .goBack,
+  .notifications,
+  #home .instructions {
+    opacity: 1;
+  }
 
-#homepage, #home navbar{
-  background-color: var(--white);
-}
+  #homepage,
+  #home nav {
+    background-color: var(--white);
+  }
 
-#homepage .halls, #home .instructions {
+  #homepage .halls,
+  #home .instructions {
     width: 100%;
     margin: 0 auto;
-}
+  }
 
-#home footer {
-  visibility: visible;
+  #home footer {
+    visibility: visible;
     display: flex;
     align-items: center;
     text-align: center;
@@ -182,19 +156,23 @@ body{
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-}
+  }
 
-#home footer div{
-      display: flex;
+  #home footer div {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 20px;
     width: 30px;
+  }
+
+  #home footer div span {
+    padding-top: 10px;
+  }
 }
 
-#home footer div span{
-  padding-top: 10px;
 
-}
-
+body > div.MuiModal-root.css-79ws1d-MuiModal-root > div.MuiBox-root.css-1wnsr1i > button{
+  float: right;
+  margin: 10px;
 }

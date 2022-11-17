@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Modal from "./ConfirmModal";
 import Cards from "../components/Cards";
 import useFetch from "../hooks/useFetch";
 import { ThreeDots } from "react-loading-icons";
+import Modals from "./Modals";
 
 const DisplayOtherRoom = () => {
   // Used the Api domain name as proxy to bypass the CORS
@@ -11,24 +11,15 @@ const DisplayOtherRoom = () => {
   // ----------------------------------------------//
   const [modalToggle, setModalToggle] = useState(false);
   const [modalContent, setModalContent] = useState();
-  // to prevent scroll while the modal is open
-  const [stopScroll, setStopScroll] = useState(null);
-  // ===============================================//
 
   // -------------------------------------------------//
   const showRoomDetails = (rooms) => {
     setModalContent(rooms);
     setModalToggle(!modalToggle);
-    // ----------------------------
-    if (stopScroll === null) {
-      setStopScroll({ position: "fixed" });
-    } else {
-      setStopScroll(null);
-    }
   };
   // ---------------------------------------------------==
   return (
-    <section style={stopScroll}>
+    <section>
       {!!error ? (
         <p>{error}.</p>
       ) : isLoading ? (
@@ -41,7 +32,11 @@ const DisplayOtherRoom = () => {
           {data && (
             <>
               {data.flat(1)?.map((rooms) => (
-                <div className="cards" onClick={() => showRoomDetails(rooms)}>
+                <div
+                  className="cards"
+                  onClick={() => showRoomDetails(rooms)}
+                  key={rooms.roomNo}
+                >
                   <Cards
                     roomNo={rooms?.roomNo}
                     spacesLeft={rooms?.spacesLeft}
@@ -50,9 +45,9 @@ const DisplayOtherRoom = () => {
               ))}
 
               {modalToggle && (
-                <Modal
+                <Modals
                   room_no={modalContent.roomNo}
-                  closeTheModal={showRoomDetails}
+                  hall_id={modalContent.hallId}
                 />
               )}
             </>

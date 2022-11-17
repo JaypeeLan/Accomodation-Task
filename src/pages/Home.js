@@ -19,7 +19,7 @@ import DisplayRooms from "./DisplayRooms";
 const Home = () => {
   return (
     <div id="home">
-      <navbar>
+      <nav>
         <div className="goBack">
           <img src={backIcon} alt="go back" />
         </div>
@@ -30,7 +30,7 @@ const Home = () => {
           </div>
           <img src={profileIcon} alt="profile" />
         </div>
-      </navbar>
+      </nav>
       {/* --------------------------- */}
       <div id="homepage">
         <h2> Select a room</h2>

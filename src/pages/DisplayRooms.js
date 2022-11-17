@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ConfirmModal from "./ConfirmModal";
 import Cards from "../components/Cards";
 import useFetch from "../hooks/useFetch";
 import { ThreeDots } from "react-loading-icons";
+import Modals from "./Modals";
 
 const DisplayRooms = () => {
   // Used the Api domain name as proxy to bypass the CORS
@@ -12,23 +12,14 @@ const DisplayRooms = () => {
   const [modalToggle, setModalToggle] = useState(false);
   const [modalContent, setModalContent] = useState();
 
-  const [stopScroll, setStopScroll] = useState(null);
-  // ===============================================//
-
+  // -------------------------------------------------//
   const showRoomDetails = (rooms) => {
     setModalContent(rooms);
     setModalToggle(!modalToggle);
-
-    // to prevent scroll while the modal is open
-    if (stopScroll === null) {
-      setStopScroll({ position: "fixed" });
-    } else {
-      setStopScroll(null);
-    }
   };
   // ---------------------------------------------------==
   return (
-    <section style={stopScroll}>
+    <section>
       {!!error ? (
         <p>{error}.</p>
       ) : isLoading ? (
@@ -40,9 +31,12 @@ const DisplayRooms = () => {
         <>
           {data && (
             <>
-              {/* To access nested arrays without looping through each one, use flat method */}
               {data.flat(1)?.map((rooms) => (
-                <div className="cards" onClick={() => showRoomDetails(rooms)}>
+                <div
+                  className="cards"
+                  onClick={() => showRoomDetails(rooms)}
+                  key={rooms.roomNo}
+                >
                   <Cards
                     roomNo={rooms?.roomNo}
                     spacesLeft={rooms?.spacesLeft}
@@ -51,10 +45,9 @@ const DisplayRooms = () => {
               ))}
 
               {modalToggle && (
-                <ConfirmModal
+                <Modals
                   room_no={modalContent.roomNo}
                   hall_id={modalContent.hallId}
-                  closeTheModal={showRoomDetails}
                 />
               )}
             </>
