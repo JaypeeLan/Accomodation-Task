@@ -23,7 +23,7 @@ const useFetch = (url) => {
           setError("Ooops! This page could not be found.");
         }
         setIsLoading(false);
-      });
+      })
   }, [url]);
 
   return { data, error, isLoading };

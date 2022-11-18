@@ -13,6 +13,19 @@ const DisplayOtherRoom = () => {
   const [modalToggle, setModalToggle] = useState(false);
   const [modalContent, setModalContent] = useState();
 
+  // ---------------------------
+  function flatten(ary) {
+    var ret = [];
+    for (var i = 0; i < ary.length; i++) {
+      if (Array.isArray(ary[i])) {
+        ret = ret.concat(flatten(ary[i]));
+      } else {
+        ret.push(ary[i]);
+      }
+    }
+    return ret;
+  }
+
   // -------------------------------------------------//
   const showRoomDetails = (rooms) => {
     setModalContent(rooms);
@@ -32,7 +45,7 @@ const DisplayOtherRoom = () => {
         <>
           {data && (
             <>
-              {data.flatten()?.map((rooms, index) => (
+              {flatten(data)?.map((rooms, index) => (
                 <div
                   className="cards"
                   onClick={() => showRoomDetails(rooms)}

@@ -9,17 +9,17 @@ const DisplayRooms = () => {
   const { data, error, isLoading } = useFetch(`/api/rooms?hallId=mariere`); //check line 5 in package.json file
 
   // --------------To flatten the nested arrays in the API
-  Array.prototype.flatten = function () {
-    var arr = [];
-    for (var i = 0; i < this.length; i++) {
-      if (Array.isArray(this[i])) {
-        arr = arr.concat(this[i].flatten());
+  function flatten(ary) {
+    var ret = [];
+    for (var i = 0; i < ary.length; i++) {
+      if (Array.isArray(ary[i])) {
+        ret = ret.concat(flatten(ary[i]));
       } else {
-        arr.push(this[i]);
+        ret.push(ary[i]);
       }
     }
-    return arr;
-  };
+    return ret;
+  }
 
   // ----------------------------------------------//
   const [modalToggle, setModalToggle] = useState(false);
@@ -44,7 +44,7 @@ const DisplayRooms = () => {
         <>
           {data && (
             <>
-              {data.flatten()?.map((rooms) => (
+              {flatten(data)?.map((rooms) => (
                 <div
                   className="cards"
                   onClick={() => showRoomDetails(rooms)}
