@@ -4,15 +4,20 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+// ----
+import {Puff}  from 'react-loading-icons'
 
-const Modals = ({ hall_id, room_no }) => {
+const Modals = ({ hall_id, room_no, setModalToggle }) => {
   // -------------------------------
   const [confirmBooking, setConfirmBooking] = useState(true);
   const [bookingSuccess, setBookingSuccess] = useState(false);
 
   // handle opening and closing of modal
   const [open, setOpen] = useState(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setModalToggle(false);
+    setOpen(false);
+  };
 
   // ==============================
   //for the success modal
@@ -27,7 +32,8 @@ const Modals = ({ hall_id, room_no }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 300,
+    width: "70vw",
+    maxWidth: 600,
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
@@ -37,17 +43,18 @@ const Modals = ({ hall_id, room_no }) => {
   // -------------------------------------
   const sendPostRequest = async () => {
     setConfirmBooking(!confirmBooking);
-    setBookingSuccess(true)
+    setBookingSuccess(true);
     // -------------------------------------------//
     const payload = {
       hallId: hall_id,
       roomNo: room_no,
       matricNo: "000000001",
     };
+    // --------------------------------------
     await axios
       .post("/api/rooms", payload)
       .then((response) => setData(response.data))
-      .catch((error) => setError("An error oc. Please try agai."))
+      .catch((error) => setError("An error occurred. Please try again."))
       .finally(() => setLoaded(true));
   };
 
@@ -62,7 +69,9 @@ const Modals = ({ hall_id, room_no }) => {
         <Box sx={style}>
           {confirmBooking && (
             <>
-              <p>Are you sure you want to book room {room_no}</p>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                Are you sure you want to book room {room_no}
+              </Typography>
               <Button
                 variant="outlined"
                 color="success"
@@ -72,19 +81,20 @@ const Modals = ({ hall_id, room_no }) => {
               </Button>
             </>
           )}
-          {bookingSuccess && (!!error ? (
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              {error}
-            </Typography>
-          ) : !loaded ? (
-            <p>loading...</p>
-          ) : (
-            <>
+          {bookingSuccess &&
+            (!!error ? (
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Your Room {room_no} has been booked successfully.
+                {error}
               </Typography>
-            </>
-          ))}
+            ) : !loaded ? (
+              <Puff stroke="#98ff98" strokeOpacity={0.125} speed={0.75} />
+            ) : (
+              <>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  Your Room {room_no} has been booked successfully.
+                </Typography>
+              </>
+            ))}
         </Box>
       </Modal>
     </div>

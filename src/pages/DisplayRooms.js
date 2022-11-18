@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Cards from "../components/Cards";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch.js";
 import { ThreeDots } from "react-loading-icons";
 import Modals from "./Modals";
 
@@ -24,7 +24,7 @@ const DisplayRooms = () => {
         <p>{error}.</p>
       ) : isLoading ? (
         <div style={{ margin: "0 auto" }}>
-          <ThreeDots stroke="#98ff98" />
+          <ThreeDots stroke="#FF0000" />
         </div>
       ) : (
         // ----------------------------//
@@ -48,6 +48,7 @@ const DisplayRooms = () => {
                 <Modals
                   room_no={modalContent.roomNo}
                   hall_id={modalContent.hallId}
+                  setModalToggle={setModalToggle}
                 />
               )}
             </>

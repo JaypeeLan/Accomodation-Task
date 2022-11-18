@@ -79,13 +79,6 @@ body {
 
 /* ========================== */
 
-section {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-/* -------------------------- */
 .cards {
   position: relative;
   min-height: 80px;
@@ -95,7 +88,6 @@ section {
   margin: 5px;
   margin-right: 1%;
   text-align: center;
-  background-color: red;
   cursor: pointer;
 }
 
@@ -171,8 +163,12 @@ section {
   }
 }
 
+/* modal button*/
 
-body > div.MuiModal-root.css-79ws1d-MuiModal-root > div.MuiBox-root.css-1wnsr1i > button{
+body
+  > div.MuiModal-root.css-79ws1d-MuiModal-root
+  > div.MuiBox-root.css-1lpadg4
+  > button {
   float: right;
   margin: 10px;
 }

@@ -1,9 +1,15 @@
 import { useRef } from "react";
 const Cards = (props) => {
   const card = useRef(null);
+  const colors = {
+    availableRooms: "#bfdeff",
+    noAvailableRooms: "#ececec",
+    selectedRoom: "#daf0e3",
+    selectedRoomBorder: "#0b9e43",
+  };
   const changeStyle = () => {
-    card.current.style.backgroundColor = "#daf0e3";
-    card.current.style.border = "1px solid #0b9e43";
+    card.current.style.backgroundColor = `${colors.selectedRoom}`;
+    card.current.style.border = `1px solid ${colors.selectedRoomBorder}`;
   };
 
   return (
@@ -12,7 +18,10 @@ const Cards = (props) => {
       ref={card}
       onClick={changeStyle}
       style={{
-        backgroundColor: props.spacesLeft > 0 ? "#bfdeff" : "#ececec",
+        backgroundColor:
+          props.spacesLeft > 0
+            ? `${colors.availableRooms}`
+            : `${colors.noAvailableRooms}`,
         cursor: "pointer",
       }}
     >
