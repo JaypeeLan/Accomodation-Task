@@ -48,6 +48,7 @@ const DisplayRooms = () => {
                 <Modals
                   room_no={modalContent.roomNo}
                   hall_id={modalContent.hallId}
+                  spacesLeft = {modalContent.spacesLeft}
                   setModalToggle={setModalToggle}
                 />
               )}

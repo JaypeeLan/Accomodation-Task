@@ -5,9 +5,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 // ----
-import {Puff}  from 'react-loading-icons'
+import { Puff } from "react-loading-icons";
 
-const Modals = ({ hall_id, room_no, setModalToggle }) => {
+const Modals = ({ hall_id, room_no, setModalToggle, spacesLeft }) => {
   // -------------------------------
   const [confirmBooking, setConfirmBooking] = useState(true);
   const [bookingSuccess, setBookingSuccess] = useState(false);
@@ -67,20 +67,32 @@ const Modals = ({ hall_id, room_no, setModalToggle }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {confirmBooking && (
+          {/* --------------------------------------------------------- */}
+          {spacesLeft > 0 ? (
             <>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Are you sure you want to book room {room_no}
-              </Typography>
-              <Button
-                variant="outlined"
-                color="success"
-                onClick={sendPostRequest}
-              >
-                Confirm
-              </Button>
+              {confirmBooking && (
+                <>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Are you sure you want to book room {room_no}
+                  </Typography>
+                  <Button
+                    variant="outlined"
+                    color="success"
+                    onClick={sendPostRequest}
+                  >
+                    Confirm
+                  </Button>
+                </>
+              )}
             </>
+          ) : (
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Sorry, no available space in this room. Please select a room with
+              an available space.
+            </Typography>
           )}
+
+          {/* --------------------------------------------------- */}
           {bookingSuccess &&
             (!!error ? (
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
