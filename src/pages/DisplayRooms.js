@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cards from "../components/Cards";
 import useFetch from "../hooks/useFetch.js";
 import { ThreeDots } from "react-loading-icons";
+import "array-flat-polyfill";
 import Modals from "./Modals";
 
 const DisplayRooms = () => {
