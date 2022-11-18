@@ -32,7 +32,7 @@ const DisplayOtherRoom = () => {
         <>
           {data && (
             <>
-              {data.flat(1)?.map((rooms, index) => (
+              {data.flatten()?.map((rooms, index) => (
                 <div
                   className="cards"
                   onClick={() => showRoomDetails(rooms)}

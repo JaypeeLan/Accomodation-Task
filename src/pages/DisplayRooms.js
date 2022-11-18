@@ -2,12 +2,24 @@ import { useState } from "react";
 import Cards from "../components/Cards";
 import useFetch from "../hooks/useFetch.js";
 import { ThreeDots } from "react-loading-icons";
-import "array-flat-polyfill";
 import Modals from "./Modals";
 
 const DisplayRooms = () => {
   // Used the Api domain name as proxy to bypass the CORS
   const { data, error, isLoading } = useFetch(`/api/rooms?hallId=mariere`); //check line 5 in package.json file
+
+  // --------------To flatten the nested arrays in the API
+  Array.prototype.flatten = function () {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+      if (Array.isArray(this[i])) {
+        arr = arr.concat(this[i].flatten());
+      } else {
+        arr.push(this[i]);
+      }
+    }
+    return arr;
+  };
 
   // ----------------------------------------------//
   const [modalToggle, setModalToggle] = useState(false);
@@ -32,7 +44,7 @@ const DisplayRooms = () => {
         <>
           {data && (
             <>
-              {data.flat(1)?.map((rooms) => (
+              {data.flatten()?.map((rooms) => (
                 <div
                   className="cards"
                   onClick={() => showRoomDetails(rooms)}
@@ -49,7 +61,7 @@ const DisplayRooms = () => {
                 <Modals
                   room_no={modalContent.roomNo}
                   hall_id={modalContent.hallId}
-                  spacesLeft = {modalContent.spacesLeft}
+                  spacesLeft={modalContent.spacesLeft}
                   setModalToggle={setModalToggle}
                 />
               )}
